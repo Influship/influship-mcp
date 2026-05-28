@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.influship/influship-mcp",
+  "title": "Influship",
+  "description": "Find and analyze influencers with creator search, lookalikes, profiles, posts, and transcripts.",
+  "version": "0.1.0",
+  "websiteUrl": "https://docs.influship.com/guides/mcp-server",
+  "repository": {
+    "url": "https://github.com/Influship/influship-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.influship.com/mcp",
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "description": "Your Influship API key from https://developers.influship.com",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@influship/mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "INFLUSHIP_API_KEY",
+          "description": "Your Influship API key from https://developers.influship.com",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "INFLUSHIP_MCP_URL",
+          "description": "Optional MCP endpoint override for development.",
+          "default": "https://mcp.influship.com/mcp",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "@influship/mcp",
+  "version": "0.1.0",
+  "mcpName": "io.github.influship/influship-mcp",
+  "description": "Influship MCP server for AI-native creator discovery, influencer search, lookalikes, profile lookup, and Instagram post analysis.",
+  "type": "module",
+  "bin": {
+    "influship-mcp": "dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "types": "./dist/cli.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "server.json"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "influencer-marketing",
+    "creator-discovery",
+    "instagram",
+    "tiktok",
+    "youtube",
+    "ai-agents"
+  ],
+  "license": "MIT",
+  "homepage": "https://docs.influship.com/guides/mcp-server",
+  "author": {
+    "name": "Influship",
+    "email": "support@influship.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Influship/influship-mcp.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "prepack": "pnpm build"
+  },
+  "dependencies": {
+    "mcp-remote": "^0.1.38"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@types/node": "^25.9.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.20.2"
+  }
+}

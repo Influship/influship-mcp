@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.20.2
+      - run: pnpm install
+      - run: pnpm test
+      - run: pnpm type-check
+      - run: pnpm lint
+      - run: pnpm build
+      - run: curl -fsSL https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json -o /tmp/mcp-server.schema.json
+      - run: pnpm dlx ajv-cli validate --strict=false -s /tmp/mcp-server.schema.json -d server.json
