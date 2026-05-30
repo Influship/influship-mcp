@@ -1,5 +1,10 @@
 # Influship MCP
 
+[![npm version](https://img.shields.io/npm/v/@influship/mcp.svg)](https://www.npmjs.com/package/@influship/mcp)
+[![npm downloads](https://img.shields.io/npm/dm/@influship/mcp.svg)](https://www.npmjs.com/package/@influship/mcp)
+[![CI](https://github.com/Influship/influship-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Influship/influship-mcp/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 AI-native creator discovery for influencer marketing workflows. Influship gives
 ChatGPT, Claude, Cursor, Codex, VS Code, and other MCP-compatible agents typed
 tools for creator search, lookalikes, profile lookup, post lookup, and Instagram

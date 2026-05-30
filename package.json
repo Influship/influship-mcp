@@ -1,6 +1,6 @@
 {
   "name": "@influship/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "mcpName": "io.github.influship/influship-mcp",
   "description": "Influship MCP server for AI-native creator discovery, influencer search, lookalikes, profile lookup, and Instagram post analysis.",
   "type": "module",
