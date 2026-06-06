@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -66,8 +66,22 @@ function resolveMcpRemoteBin(): string {
   return join(dirname(packageJsonPath), binPath);
 }
 
-function isCliEntrypoint(moduleUrl: string, argvPath: string | undefined): boolean {
-  return Boolean(argvPath && fileURLToPath(moduleUrl) === resolve(argvPath));
+export function isCliEntrypoint(moduleUrl: string, argvPath: string | undefined): boolean {
+  if (!argvPath) {
+    return false;
+  }
+
+  return normalizePath(fileURLToPath(moduleUrl)) === normalizePath(argvPath);
+}
+
+function normalizePath(path: string): string {
+  const resolvedPath = resolve(path);
+
+  try {
+    return realpathSync.native(resolvedPath);
+  } catch {
+    return resolvedPath;
+  }
 }
 
 if (isCliEntrypoint(import.meta.url, process.argv[1])) {

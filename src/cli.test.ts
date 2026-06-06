@@ -1,5 +1,9 @@
+import { mkdtempSync, symlinkSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { buildMcpRemoteArgs } from './cli.js';
+import { buildMcpRemoteArgs, isCliEntrypoint } from './cli.js';
 
 describe('buildMcpRemoteArgs', () => {
   it('bridges stdio clients to the hosted Influship MCP server with the API key header', () => {
@@ -32,5 +36,17 @@ describe('buildMcpRemoteArgs', () => {
     expect(() => buildMcpRemoteArgs({ INFLUSHIP_API_KEY: '   ' }, [])).toThrow(
       'Set INFLUSHIP_API_KEY before running @influship/mcp.'
     );
+  });
+});
+
+describe('isCliEntrypoint', () => {
+  it('recognizes npm bin symlinks as the CLI entrypoint', () => {
+    const tempDir = mkdtempSync(join(tmpdir(), 'influship-mcp-'));
+    const cliPath = join(tempDir, 'cli.js');
+    const binPath = join(tempDir, 'influship-mcp');
+    writeFileSync(cliPath, '');
+    symlinkSync(cliPath, binPath);
+
+    expect(isCliEntrypoint(pathToFileURL(cliPath).href, binPath)).toBe(true);
   });
 });
