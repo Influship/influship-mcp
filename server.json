@@ -3,7 +3,7 @@
   "name": "io.github.influship/influship-mcp",
   "title": "Influship",
   "description": "Find and analyze influencers with creator search, lookalikes, profiles, posts, and transcripts.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://docs.influship.com/guides/mcp-server",
   "repository": {
     "url": "https://github.com/Influship/influship-mcp",
@@ -28,7 +28,7 @@
     {
       "registryType": "npm",
       "identifier": "@influship/mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },
